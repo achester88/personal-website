@@ -1,14 +1,14 @@
 ---
 title: 'This Website'
-description: 'This website is hosted as public repo on github'
+description: 'This website is hosted publicly on github'
 pubDate: 'Jul 09 2024'
 heroImage:
-    url: '/blog-placeholder-about.jpg'
-    alt: 'GitHub wallpaper'
+  url: '/website-07-09-2024.png'
+  alt: "Screenshot This Website's Homepage"
 platform: Web
 stack: ['Astro', 'JS']
 website: https://anthonychester.dev
 github: https://github.com/achester88/personal-website
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras faucibus a tortor at molestie. Sed pellentesque leo auctor, auctor lorem nec, venenatis risus. Vivamus commodo ipsum vitae orci finibus, vel porta nunc viverra. In hac habitasse platea dictumst. Nunc pretium, ligula ultricies consequat sollicitudin, enim ex ullamcorper nisl.
+This website is based off of [Astro Theme Cody](https://github.com/kirontoo/astro-theme-cody) and hosted on a public repository on my GitHub

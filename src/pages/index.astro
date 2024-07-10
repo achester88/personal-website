@@ -16,11 +16,13 @@ const allPostsByPinned = sortMDByPinned(allPostsByDate);
 	<section>
 		<h1 class="title">Hello World</h1>
 		<p class="mb-4 sm:mb-8">
-			Welcome to my personal website home to ranty off topic blog posts, dumb projects, and more <projects></projects>
+			Welcome to my personal website home to ranty off topic blog posts, dumb projects, and more
+
 		</p>
+		(w.i.p)
 	</section>
 
-	<section class="mt-8 sm:mt-16">
+	<section class="mt-4 sm:mt-8">
 		<h2 class="title">Posts</h2>
 		<ul class="space-y-4 sm:space-y-2">
 			{allPostsByPinned.map(p => <PostPreview post={p}/>)}
