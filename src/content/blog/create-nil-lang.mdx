@@ -3,6 +3,7 @@ title: "NIL Lang"
 description: "My submission for the 2024 hackclub langjam"
 pubDate: 2024-07-9
 draft: true
+tags: ["project-blog", "lang-dev", "nil"]
 ---
 ![screenshot](/nil-demo2.png)
 
@@ -43,8 +44,47 @@ all the way back to the main function to be added to the AST(Abstract Syntax Tre
 large codebase, it makes changing, expanding and modifying the language much, much easier down the road.
 
 ### F*CK LLVM
-Step 3 in the iron kaleidoscope is where my plans for a complied language all fell apart. It was supposed to be simple, install iron-llvm tehn write some
-code to convert the AST to LLVM IR.
+Step 3 in the iron kaleidoscope is where my plans for a complied language all fell apart. It was supposed to be simple, install iron-llvm then write
+some code to convert the AST to LLVM IR. So I added the iron-llvm dependency, naively expecting a simple and straight forward process. After trying to
+compile the project (and thus iron-llvm) with cargo, I was hit with a simple error that would go on to haunt my dreams.
+
+"***Couldn't execute llvm-config. Error: No such file or directory (os error 2)***"
+
+*Ok. Not that bad I though, one simple error. Shouldn't take more than 5 min to fix*
+
+So I took the obvious next step and googled llvm-config, and after some digging discovered that *duh* I need to install llvm. So one dnf install later
+I tried building again, only to once again be hit with:
+
+"***Couldn't execute llvm-config. Error: No such file or directory (os error 2)***"
+
+Ok time for some more digging, and about 15min later I learned that the Fedora llvm package did not include the development features and as such, I would need to
+build LLVM from source. As it was already late at the time, I decided to follow LLVM guide to building from source with ninja and let it build overnight
+to (hopeful) wake up to a working iron-llvm version to get back to work. Of course, in the typical development, I work half-complete LLVM built and a
+full disk. It seemed like I had underestimated both the size of the LLVM build and my 40GB Linux Partition. Simple, I though, I'll just clean some room
+and build the min size release.
+
+Look, I'll save you (and me) the trouble of reliving that cycle, but after many (many) installation attempts and a whole lot of file deleting, I was able
+to get a working version of LLVM to build. So with a work development version of LLVM, I once again tried to build nil, and once again:
+
+"***Couldn't execute llvm-config. Error: No such file or directory (os error 2)***"
+
+*Great, just Great.*
+
+It was at this point I took a closer look at the iron kaleidoscope repo and realized that both the guide and the iron-llvm package hadn't been touched
+in **8** years (9 at the time of writing). Still, I dug deeper and took a look at iron-llvm's GitHub repo with the hopes of finding an installation guide
+or at least some docs. It was then I felt true despair when I found nothing but a link back the useless iron kaleidoscope guide and some llvm documentation.
+After even more investigating, I finally found track down the documentation for the llvm-sys crate and was able to finally get passed the llvm-config error
+by setting the LLVM_SYS_39_PREFIX env and adding the LLVM bin directory to PATH.
+
+*Finally, After at this point several days, I was going to be able to move on with nil and finally get it running.*
+
+Nope. I was hit with at least 100 errors from LLVM with 0 leads as to how to fix it. So I made the **very** hard decision to throw away all of my work
+over the past couple of days on getting iron kaleidoscope to build and swap to an interpreter in order to meet the deadline of the jam.
+
+## Evaluate
+
+Since the iron kaleidoscope guide was for a compiler, I had to build NIL's Evaluate from scratch, which thanks to the powerful Parser proved to be
+an easy task
 
 ## V1.0
 
