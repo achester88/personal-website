@@ -1,0 +1,55 @@
+---
+title: "NIL Lang"
+description: "My submission for the 2024 hackclub langjam"
+pubDate: 2024-07-9
+draft: true
+---
+![screenshot](/nil-demo2.png)
+
+## Background
+
+It all stared about 3 weeks ago when I first heard about hackclub's arcade program (if you haven't already check it out [here](https://hackclub.com/arcade/))
+and discovered the langjam hackathon<sup>[1](#ref1)</sup>. I played around with the idea of joining for a while and ultimately decided to, despite the fact that the jam
+had already been going on for 3 weeks by that point.
+
+NIL was designed from the jump to be a hard to write, esoteric **compiled** programming language, so using the experience gained writing my
+first programing language [lang](https://github.com/achester88/lang), I followed jauhien's iron-kaleidoscope guide<sup>[2](#ref2)</sup> (which
+proved to be a terrible, terrible mistake).
+
+## Build NIL
+
+### Lexer
+I Started off with the lexer following the guide, but tweaking the code to fit my need of parsing line in reverses, only using parsing the
+code surrounded by `/* */` characters, etc, etc. Its mainly just loops through the input by line in reverse and then uses regex on detect language
+items, classify them accordingly before finally wrapping then up with the source code position in a Rust Struct. The tokens were then collected and passed
+as a Vec to the Parser.
+
+### Parser
+The Parser. Oh, the Parser, this is where it all started. Still dutifully following the iron kaleidoscope guide, I got started on the Parser while my
+first language used a pure single function recursive parser iron kaleidoscope used a recursive descent parser. Already in a somewhat unfamiliar territory,
+made the choice to remove the REPL part of iron kaleidoscope, meaning **all** of the parser code need to be modified to remove NotComplete logic.
+
+Similar to the Lexer, the Parser loops though a Vec of grammar tokens determining the token type and passing the list on tokens to the proper function
+to be processed. This allows the functions it passes to then operate with certain assumptions based on the designed syntax.
+
+For example:
+```python
+;{output} (5 + 5)
+```
+
+This code would first hit the main function loop before being passed to the parse_expression function to be wrapped as an anonymous function (done for
+the sake of simply while working with LLVM), then to the parse_expr function and so on and so on. The result of this little dance then makes its way
+all the way back to the main function to be added to the AST(Abstract Syntax Tree) and passed to the IR builder. While this method does lead to a
+large codebase, it makes changing, expanding and modifying the language much, much easier down the road.
+
+### F*CK LLVM
+Step 3 in the iron kaleidoscope is where my plans for a complied language all fell apart. It was supposed to be simple, install iron-llvm tehn write some
+code to convert the AST to LLVM IR.
+
+## V1.0
+
+## What's Next
+
+## References
+[1] <a id="ref1" href="https://langjam.hackclub.com/">Langjam Website</a><br/>
+[2] <a id="ref2" href="https://github.com/jauhien/iron-kaleidoscope?tab=readme-ov-file#llvm-tutorial-in-the-rust-language">Iron Kaleidoscope Guide</a>
