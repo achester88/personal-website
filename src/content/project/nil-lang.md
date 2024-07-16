@@ -29,4 +29,4 @@ def (
 */
 ```
 
-read the docs [here](https://github.com/achester88/nil/blob/main/DOCS.md)
+read the docs [here](https://github.com/achester88/nil/blob/main/DOCS.md) or check out the blog post [here](/blog/create-nil-lang/)

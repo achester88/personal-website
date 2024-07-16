@@ -1,8 +1,7 @@
 ---
-title: "NIL Lang"
-description: "My submission for the 2024 hackclub langjam"
+title: "Creating NIL Lang"
+description: "A interpreted esoteric programming language built for HackClub's Langjam written in Rust"
 pubDate: 2024-07-9
-draft: true
 tags: ["project-blog", "lang-dev", "nil"]
 ---
 ![screenshot](/nil-demo2.png)
@@ -17,15 +16,15 @@ NIL was designed from the jump to be a hard to write, esoteric **compiled** prog
 first programing language [lang](https://github.com/achester88/lang), I followed jauhien's iron-kaleidoscope guide<sup>[2](#ref2)</sup> (which
 proved to be a terrible, terrible mistake).
 
-## Build NIL
+## Building NIL
 
-### Lexer
+### Everybody starts of Lexwhere
 I Started off with the lexer following the guide, but tweaking the code to fit my need of parsing line in reverses, only using parsing the
 code surrounded by `/* */` characters, etc, etc. Its mainly just loops through the input by line in reverse and then uses regex on detect language
 items, classify them accordingly before finally wrapping then up with the source code position in a Rust Struct. The tokens were then collected and passed
 as a Vec to the Parser.
 
-### Parser
+### Parser, Passing, Pausing
 The Parser. Oh, the Parser, this is where it all started. Still dutifully following the iron kaleidoscope guide, I got started on the Parser while my
 first language used a pure single function recursive parser iron kaleidoscope used a recursive descent parser. Already in a somewhat unfamiliar territory,
 made the choice to remove the REPL part of iron kaleidoscope, meaning **all** of the parser code need to be modified to remove NotComplete logic.
@@ -81,14 +80,32 @@ by setting the LLVM_SYS_39_PREFIX env and adding the LLVM bin directory to PATH.
 Nope. I was hit with at least 100 errors from LLVM with 0 leads as to how to fix it. So I made the **very** hard decision to throw away all of my work
 over the past couple of days on getting iron kaleidoscope to build and swap to an interpreter in order to meet the deadline of the jam.
 
-## Evaluate
+### Eval for you, Eval for me
 
 Since the iron kaleidoscope guide was for a compiler, I had to build NIL's Evaluate from scratch, which thanks to the powerful Parser proved to be
-an easy task
+a relatively easy task. Using similar logic to the Parser, the Evaluator looped over the AST determined the type of each node and passed the tree down to
+a corresponding function. When the Evaluator finally reached a function call or operation, it first evaluated the arguments. Then it referred to a special
+forms hashmap connecting names/symbols to inbuilt rust functions such which took in said arguments, preformed an operation and returned a value. Of
+ course, for user defined variables and functions, the process was different.
 
-## V1.0
+#### Zooming in on Scope
 
-## What's Next
+With in the NIL Language Scope was represented as a struct two corresponding fields for variables and user defined functions. The function field
+contains a simple HashMap mapping the names of functions to an AST to be executed when called. The variable field is a Vec of HashMaps mapping
+variable names to their current value. A Vec is used in order to allow for different scope levels, for example, when the Evaluator runs the *then* part
+of an if statement a new HashMap is created for the new scope and removed after the *then* is evaluated. While easy to implement, this turned out to be
+**very** slow when recursion came in the picture, but by this point time was running out so ¯\\_(ツ)_/¯
+
+## Version 1.0!
+
+This brings us to the Version 1.0 release, as of now, Error Handing is only half down with only the Lexer (and part of the Parser) giving out "good"
+errors. Besides that, all other features of the language are working, so feel free to try it out right now [Getting Start with NIL](https://github.com/achester88/nil/tree/v1.0.0?tab=readme-ov-file#getting-started)
+
+
+## ~~Deranged Maniac~~ Author's Note
+
+Here we are all done, This is my first time writing something like this, so please forgive the well... all of it. Jokes aside if you did mange to
+get though all of that, thank you for reading, and I'll try to improve with the next post (and add more pictures).
 
 ## References
 [1] <a id="ref1" href="https://langjam.hackclub.com/">Langjam Website</a><br/>

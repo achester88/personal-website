@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../layouts/Base.astro";
+
+const url = "/";
+---
+
+<BaseLayout title="Home">
+    <section>
+        <meta http-equiv="refresh" content={"0; url=" + url} />
+        <p><a href={url}>Redirecting to {url}</a></p>
+    </section>
+</BaseLayout>
