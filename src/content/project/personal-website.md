@@ -12,3 +12,5 @@ github: https://github.com/achester88/personal-website
 ---
 
 This website is based off of [Astro Theme Cody](https://github.com/kirontoo/astro-theme-cody) and hosted on a public repository on my GitHub
+
++ mcserver [here](https://mcserver.anthonychester.dev)
