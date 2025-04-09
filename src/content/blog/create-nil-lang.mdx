@@ -42,7 +42,7 @@ the sake of simply while working with LLVM), then to the parse_expr function and
 all the way back to the main function to be added to the AST(Abstract Syntax Tree) and passed to the IR builder. While this method does lead to a
 large codebase, it makes changing, expanding and modifying the language much, much easier down the road.
 
-### F*CK LLVM
+### Screw LLVM
 Step 3 in the iron kaleidoscope is where my plans for a complied language all fell apart. It was supposed to be simple, install iron-llvm then write
 some code to convert the AST to LLVM IR. So I added the iron-llvm dependency, naively expecting a simple and straight forward process. After trying to
 compile the project (and thus iron-llvm) with cargo, I was hit with a simple error that would go on to haunt my dreams.
