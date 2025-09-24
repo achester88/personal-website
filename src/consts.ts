@@ -23,7 +23,7 @@ export const siteConfig: Config = {
   lang: "en-US",
   profile: {
     author: "Anthony Chester",
-    description: "High School Senior, Programmer, and More"
+    description: "Undergraduate, Programmer, and More"
   }
 }
 
