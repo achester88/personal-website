@@ -1,15 +1,1 @@
-<svg width="950" height="941" viewBox="0 0 950 941" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_1_10)">
-<path d="M947.662 277.724L948.266 669.591L671.601 947.11L279.733 947.714L2.21446 671.049L1.61081 279.181L278.276 1.66234L670.143 1.05871L947.662 277.724Z" fill="#212121"/>
-<path d="M142 614L225.029 471.972L391.088 471.972L474.117 614L391.088 756.028H225.029L142 614Z" fill="#212121" stroke="#3BD4EF" stroke-width="41"/>
-<path d="M142 327L225.029 184.972L391.088 184.972L474.117 327L391.088 469.028L225.029 469.028L142 327Z" fill="#212121" stroke="#3BD4EF" stroke-width="41"/>
-<path d="M484 614L567.029 471.972L733.088 471.972L816.117 614L733.088 756.028H567.029L484 614Z" fill="#212121" stroke="#3BD4EF" stroke-width="41"/>
-<path d="M484 327L567.029 184.972L733.088 184.972L816.117 327L733.088 469.028L567.029 469.028L484 327Z" fill="#212121" stroke="#3BD4EF" stroke-width="41"/>
-</g>
-<rect x="0.5" y="0.5" width="949" height="940" stroke="white"/>
-<defs>
-<clipPath id="clip0_1_10">
-<rect width="950" height="941" fill="white"/>
-</clipPath>
-</defs>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="950" height="941" fill="none" viewBox="0 0 950 941"><g clip-path="url(#clip0_1_10)"><path fill="#212121" d="M947.662 277.724L948.266 669.591L671.601 947.11L279.733 947.714L2.21446 671.049L1.61081 279.181L278.276 1.66234L670.143 1.05871L947.662 277.724Z"/><path fill="#212121" stroke="#3BD4EF" stroke-width="41" d="M142 614L225.029 471.972L391.088 471.972L474.117 614L391.088 756.028H225.029L142 614Z"/><path fill="#212121" stroke="#3BD4EF" stroke-width="41" d="M142 327L225.029 184.972L391.088 184.972L474.117 327L391.088 469.028L225.029 469.028L142 327Z"/><path fill="#212121" stroke="#3BD4EF" stroke-width="41" d="M484 614L567.029 471.972L733.088 471.972L816.117 614L733.088 756.028H567.029L484 614Z"/><path fill="#212121" stroke="#3BD4EF" stroke-width="41" d="M484 327L567.029 184.972L733.088 184.972L816.117 327L733.088 469.028L567.029 469.028L484 327Z"/></g><rect width="949" height="940" x=".5" y=".5" stroke="#fff"/><defs><clipPath id="clip0_1_10"><rect width="950" height="941" fill="#fff"/></clipPath></defs></svg>
